@@ -56,4 +56,6 @@ public class EmployeeFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(new EmployeeRecyclerViewAdapter(employees, getActivity()));
     }
+
+
 }

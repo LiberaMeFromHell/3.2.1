@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PositionFragment.PositionSelect {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +33,16 @@ public class MainActivity extends AppCompatActivity {
 
     private Fragment loadFrg() {
         return new PositionFragment();
+    }
+
+    @Override
+    public void positionSelected(int code) {
+
+        EmployeeFragment fragment = new EmployeeFragment(code);
+        FragmentManager fm = this.getSupportFragmentManager();
+        fm.beginTransaction()
+                .addToBackStack("waka?")
+                .replace(R.id.content, fragment)
+                .commit();
     }
 }

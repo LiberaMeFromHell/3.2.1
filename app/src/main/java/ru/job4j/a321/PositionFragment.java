@@ -7,6 +7,7 @@
  */
 package ru.job4j.a321;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +19,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import ru.job4j.a321.model.Position;
 import ru.job4j.a321.model.PositionRecyclerViewAdapter;
 import ru.job4j.a321.model.PositionStore;
 
 public class PositionFragment extends Fragment {
+
+    private PositionSelect positionSelect;
 
     @Nullable
     @Override
@@ -37,6 +41,22 @@ public class PositionFragment extends Fragment {
     private void intiRecyclerView(View view) {
         RecyclerView recycler = view.findViewById(R.id.recyclerView);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        recycler.setAdapter(new PositionRecyclerViewAdapter(PositionStore.POSITIONS, getActivity()));
+        recycler.setAdapter(new PositionRecyclerViewAdapter(PositionStore.POSITIONS, positionSelect));
+    }
+
+    public interface PositionSelect{
+        void positionSelected(int code);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.positionSelect = (PositionSelect)context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        this.positionSelect = null;
     }
 }

@@ -14,23 +14,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import ru.job4j.a321.EmployeeFragment;
+import ru.job4j.a321.PositionFragment;
 import ru.job4j.a321.R;
 
 public class PositionRecyclerViewAdapter extends RecyclerView.Adapter<PositionRecyclerViewAdapter.MyViewHolder> {
 
     private final List<Position> items;
-    private FragmentActivity activity;
+    private PositionFragment.PositionSelect positionSelect;
 
-    public PositionRecyclerViewAdapter(List<Position> items, FragmentActivity activity) {
+    public PositionRecyclerViewAdapter(List<Position> items, PositionFragment.PositionSelect positionSelect) {
+
         this.items = items;
-        this.activity = activity;
+        this.positionSelect = positionSelect;
     }
 
     @NonNull
@@ -72,11 +71,7 @@ public class PositionRecyclerViewAdapter extends RecyclerView.Adapter<PositionRe
 
     private void loadFrg(int code) throws RuntimeException {
 
-        EmployeeFragment fragment = new EmployeeFragment(code);
-        FragmentManager fm = activity.getSupportFragmentManager();
-        fm.beginTransaction()
-                .addToBackStack("waka?")
-                .replace(R.id.content, fragment)
-                .commit();
+        positionSelect.positionSelected(code);
+
     }
 }
