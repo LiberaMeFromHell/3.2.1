@@ -23,6 +23,7 @@ import java.util.List;
 
 import ru.job4j.a321.model.Employee;
 import ru.job4j.a321.model.EmployeeRecyclerViewAdapter;
+import ru.job4j.a321.model.EmployeeStore;
 
 public class EmployeeFragment extends Fragment {
 
@@ -46,7 +47,7 @@ public class EmployeeFragment extends Fragment {
     private void updateUI(View view) {
         List<Employee> employees = new ArrayList<>();
 
-        for (Employee em: MainActivity.EMPLOYEES) {
+        for (Employee em: EmployeeStore.EMPLOYEES) {
             if (em.getPosition().getCode() == this.code) {
                 employees.add(em);
             }

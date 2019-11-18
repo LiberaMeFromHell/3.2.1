@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ru.job4j.a321.model.PositionRecyclerViewAdapter;
+import ru.job4j.a321.model.PositionStore;
 
 public class PositionFragment extends Fragment {
 
@@ -36,6 +37,6 @@ public class PositionFragment extends Fragment {
     private void intiRecyclerView(View view) {
         RecyclerView recycler = view.findViewById(R.id.recyclerView);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        recycler.setAdapter(new PositionRecyclerViewAdapter(MainActivity.POSITIONS, getActivity()));
+        recycler.setAdapter(new PositionRecyclerViewAdapter(PositionStore.POSITIONS, getActivity()));
     }
 }

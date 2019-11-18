@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import ru.job4j.a321.model.Employee;
+import ru.job4j.a321.model.EmployeeStore;
 
 public class DetailFragment extends Fragment {
 
@@ -41,7 +42,7 @@ public class DetailFragment extends Fragment {
     private void initViews(View view) {
         Employee employee = null;
 
-        for (Employee em: MainActivity.EMPLOYEES) {
+        for (Employee em: EmployeeStore.EMPLOYEES) {
             if (em.getName().equals(this.name) && em.getSureName().equals(this.sureName)) {
                 employee = em;
                 break;
